@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Javascript</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <link rel="stylesheet" href="../src/styles/styles.css">
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">Registre-se</div>
+
+    <form id="form" class="form">
+      <div class="form-control">
+        <label for="nome">Nome</label>
+        <input type="text" placeholder="Nome" id="nome" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="cpf">CPF</label>
+        <input type="text" placeholder="CPF" id="cpf" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="dataNascimento">Data de nascimento</label>
+        <input type="date" id="dataNascimento" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="idade">Idade</label>
+        <input type="number" placeholder="Idade" id="idade" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="cep">CEP</label>
+        <input type="text" placeholder="CEP" id="cep" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="rua">Rua</label>
+        <input type="text" placeholder="Rua" id="rua" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="numero">Número</label>
+        <input type="number" placeholder="numero" id="numero" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="bairro">Bairro</label>
+        <input type="text" placeholder="Bairro" id="bairro" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="cidade">Cidade</label>
+        <input type="text" placeholder="Cidade" id="cidade" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="Estado" id="estado" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="hobby">Hobby</label>
+        <input type="text" placeholder="Hobby" id="hobby" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="aceiteLGPD">Aceite LGPD</label>
+        <input type="checkbox" id="aceiteLGPD" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <button>Submit</button>
+    </form>
+
+  </div>
+
+</body>
+<script>
+  //$('h1').html('a biblioteca jquery está funcioando')
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+
+
+  //const form = document.getElementById('form')
+  //const nome = document.getElementById('nome')
+
+  //const inputs = document.querySelectorAll('input')
+
+  /*Array.from(inputs).forEach(f => {
+    f.addEventListener('change', e => {
+      event.preventDefault()
+      nome.value = "wesley"
+    })
+  })*/
+
+  const form = document.getElementById('form')
+  const nome = document.getElementById('nome')
+  const cpf = document.getElementById('cpf')
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    checkInputs()
+  })
+
+  const checkInputs = () => {
+    checkNameInput()
+    checkCpfInput()
+  }
+
+  const checkNameInput = () => {
+    let errorMessage = ''
+
+    if (nome.value.trim() === '') {
+      errorMessage += 'Preencha o campo nome por favor'
+      setErrorFor(nome, errorMessage)
+    }
+
+    if (nome.value.trim() < 3) {
+      errorMessage += '\nO nome precisa ser maior que 2 characteres'
+      setErrorFor(nome, errorMessage)
+    }
+  }
+
+  const checkCpfInput = () => {
+    let errorMessage = ''
+    if (validarCPF(cpf.value) == false) {
+      errorMessage += 'Digite o CPF corretamente'
+      setErrorFor(cpf, errorMessage)
+    }
+
+  }
+
+  function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    const invalidFeedback = formControl.querySelector('small')
+    formControl.className = 'form-control error';
+    invalidFeedback.innerText = message
+  }
+
+</script>
+
+</html>
