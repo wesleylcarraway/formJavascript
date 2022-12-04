@@ -8,15 +8,17 @@
   <title>Form Javascript</title>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <link rel="stylesheet" href="../src/styles/styles.css">
-
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
   <div class="container">
-    <div class="header">Registre-se</div>
-
     <form id="form" class="form">
+      <div class="header">
+        <h1>Registre-se</h1>
+        <text>Preencha o formulário abaixo</text>
+      </div>
+
       <div class="form-control">
         <label for="nome">Nome</label>
         <input type="text" placeholder="Nome" id="nome" />
@@ -58,24 +60,8 @@
       </div>
 
       <div class="form-control">
-        <label for="rua">Rua</label>
-        <input type="text" placeholder="Rua" id="rua" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error message</small>
-      </div>
-
-      <div class="form-control">
-        <label for="numero">Número</label>
-        <input type="number" placeholder="numero" id="numero" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error message</small>
-      </div>
-
-      <div class="form-control">
-        <label for="bairro">Bairro</label>
-        <input type="text" placeholder="Bairro" id="bairro" />
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="Estado" id="estado" />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error message</small>
@@ -90,29 +76,43 @@
       </div>
 
       <div class="form-control">
-        <label for="estado">Estado</label>
-        <input type="text" placeholder="Estado" id="estado" />
+        <label for="bairro">Bairro</label>
+        <input type="text" placeholder="Bairro" id="bairro" />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error message</small>
       </div>
 
       <div class="form-control">
+        <label for="rua">Rua</label>
+        <input type="text" placeholder="Rua" id="rua" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="numero">Número</label>
+        <input type="number" placeholder="Número" id="numero" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="add-hobby">      
+        <i class="fa fa-plus" id="plus"></i>
+        <i class="fa fa-minus" id="minus"></i>
+      </div>
+
+      <div class="form-control" id="form-control-hobby">
         <label for="hobby">Hobby</label>
-        <input type="text" placeholder="Hobby" id="hobby" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error message</small>
-      </div>
+        <input type="text" placeholder="Hobby" class="hobby" maxlength="200"/>
+      </div>     
 
-      <div class="form-control">
-        <label for="aceiteLGPD">Aceite LGPD</label>
-        <input type="checkbox" id="aceiteLGPD" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>Error message</small>
-      </div>
-      <button>Submit</button>
+      <input type="checkbox" id="aceiteLGPD" />
+      <span class="lgpd-span">Aceito os termos e condições</span>
+
+      <button>Enviar</button>
     </form>
 
   </div>
@@ -138,6 +138,24 @@
   const form = document.getElementById('form')
   const nome = document.getElementById('nome')
   const cpf = document.getElementById('cpf')
+  const hobby = document.getElementsByClassName('hobby')
+  const plus = document.getElementById('plus')
+  const minus = document.getElementById('minus')
+
+  let hobbyClones = []
+
+  plus.addEventListener('click', (event) => {
+    event.preventDefault()
+    const clone = hobby[0].cloneNode(true);
+    document.getElementById('form-control-hobby').appendChild(clone)
+    hobbyClones.push(clone)
+  })
+
+  minus.addEventListener('click', (event) => {
+    event.preventDefault()
+    if(hobbyClones.length > 0) hobbyClones.pop().remove()
+  
+  })
 
   form.addEventListener('submit', (event) => {
     event.preventDefault()
