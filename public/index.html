@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Form Javascript</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <link rel="stylesheet" href="../src/styles/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container">
+    <form id="form" class="form" method="get">
+      <div class="header">
+        <h1>Registre-se</h1>
+        <text>Preencha o formulário abaixo</text>
+      </div>
+
+      <div class="form-control">
+        <label for="nome">Nome</label>
+        <input type="text" placeholder="Nome" id="nome" maxlength="200" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="cpf">CPF</label>
+        <input type="text" placeholder="CPF" id="cpf" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="dataNascimento">Data de nascimento</label>
+        <input type="date" id="dataNascimento" class="datepicker-input" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="idade">Idade</label>
+        <input type="number" placeholder="Idade" id="idade" disabled />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="cep">CEP</label>
+        <input type="text" placeholder="CEP" id="cep" value="" size="10" maxlength="9" onblur="searchcep(this.value)" required/>
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="Estado" id="estado" disabled />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="cidade">Cidade</label>
+        <input type="text" placeholder="Cidade" id="cidade" disabled />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="bairro">Bairro</label>
+        <input type="text" placeholder="Bairro" id="bairro" disabled />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="rua">Rua</label>
+        <input type="text" placeholder="Rua" id="rua" disabled />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="numero">Número</label>
+        <input type="number" placeholder="Número" id="numero" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="add-hobby">
+        <i class="fa fa-plus" id="plus"></i>
+        <i class="fa fa-minus" id="minus"></i>
+      </div>
+
+      <div class="form-control" id="form-control-hobby">
+        <label for="hobby">Hobby</label>
+        <input type="text" placeholder="Hobby" class="hobby" maxlength="200" />
+      </div>
+
+      <input type="checkbox" id="aceiteLGPD" required />
+      <span class="lgpd-span">Aceito os termos e condições</span>
+
+      <button>Enviar</button>
+    </form>
+  </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Dados enviados com sucesso</h3><hr>
+      <p id="form-json">Some text in the Modal..</p>
+    </div>
+  </div>
+</body>
+
+<script src="../src/app/index.js"></script>
+<script src="../src/app/services/cepWebService.js"></script>
+
+</html>
