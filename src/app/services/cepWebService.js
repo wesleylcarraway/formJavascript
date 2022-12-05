@@ -1,3 +1,5 @@
+const cepElement = document.getElementById('cep')
+
 const estado = document.getElementById('estado')
 const cidade = document.getElementById('cidade')
 const bairro = document.getElementById('bairro')
@@ -40,13 +42,24 @@ const searchcep = (value) => {
             script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=myCallback'
 
             document.body.appendChild(script)
+            
+            const formControl = cepElement.parentElement
+            formControl.className = 'form-control success'
         }
         else {
             cleanFormCep()
-            alert("Formato de CEP inválido.")
+            setErrorForCep('Preencha o campo CEP corretamente\n')
         }
     }
     else {
         cleanFormCep()
+        setErrorForCep('Preencha o campo CEP por favor\n')
     }
 }
+
+const setErrorForCep = (message) => {
+    const formControl = cepElement.parentElement
+    const invalidFeedback = formControl.querySelector('small')
+    formControl.className = 'form-control error'
+    invalidFeedback.innerText = message
+  }

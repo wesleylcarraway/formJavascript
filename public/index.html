@@ -15,7 +15,7 @@
 
 <body>
   <div class="container">
-    <form id="form" class="form" method="get" >
+    <form id="form" class="form" method="get" onsubmit="searchcep(document.getElementById('cep').value);">
       <div class="header">
         <h1>Registre-se</h1>
         <text>Preencha o formulário abaixo</text>
@@ -55,7 +55,7 @@
 
       <div class="form-control">
         <label for="cep">CEP</label>
-        <input type="text" placeholder="CEP" id="cep" value="" size="10" maxlength="9" onblur="searchcep(this.value);" />
+        <input type="text" placeholder="CEP" id="cep" value="" size="10" maxlength="9"  />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>Error message</small>
