@@ -1,23 +1,23 @@
 const cepElement = document.getElementById('cep')
 
-const estado = document.getElementById('estado')
-const cidade = document.getElementById('cidade')
-const bairro = document.getElementById('bairro')
-const rua = document.getElementById('rua')
+const estadoElement = document.getElementById('estado')
+const cidadeElement = document.getElementById('cidade')
+const bairroElement = document.getElementById('bairro')
+const ruaElement = document.getElementById('rua')
 
 const cleanFormCep = () => {
-    estado.value=("")
-    cidade.value=("")
-    bairro.value=("")
-    rua.value=("")
+    estadoElement.value=("")
+    cidadeElement.value=("")
+    bairroElement.value=("")
+    ruaElement.value=("")
 }
 
 const myCallback = (content) => {
     if (!("erro" in content)) {
-        rua.value=(content.logradouro)
-        bairro.value=(content.bairro)
-        cidade.value=(content.localidade)
-        estado.value=(content.uf)
+        ruaElement.value=(content.logradouro)
+        bairroElement.value=(content.bairro)
+        cidadeElement.value=(content.localidade)
+        estadoElement.value=(content.uf)
     }
     else {
         cleanFormCep()
@@ -32,10 +32,10 @@ const searchcep = (value) => {
         var validacep = /^[0-9]{8}$/
 
         if(validacep.test(cep)) {
-            rua.value="..."
-            bairro.value="..."
-            cidade.value="..."
-            estado.value="..."
+            ruaElement.value="..."
+            bairroElement.value="..."
+            cidadeElement.value="..."
+            estadoElement.value="..."
            
             var script = document.createElement('script')
 
@@ -62,4 +62,4 @@ const setErrorForCep = (message) => {
     const invalidFeedback = formControl.querySelector('small')
     formControl.className = 'form-control error'
     invalidFeedback.innerText = message
-  }
+}
